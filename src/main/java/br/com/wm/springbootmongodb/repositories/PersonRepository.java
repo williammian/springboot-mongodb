@@ -2,6 +2,7 @@ package br.com.wm.springbootmongodb.repositories;
 
 import br.com.wm.springbootmongodb.entities.Person;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
