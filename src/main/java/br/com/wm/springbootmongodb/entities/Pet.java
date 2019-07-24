@@ -4,6 +4,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Objects;
+
 @Document
 public class Pet {
 
@@ -52,5 +54,21 @@ public class Pet {
 
     public void setBreed(String breed) {
         this.breed = breed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pet pet = (Pet) o;
+        return Objects.equals(_id, pet._id) &&
+                Objects.equals(name, pet.name) &&
+                Objects.equals(species, pet.species) &&
+                Objects.equals(breed, pet.breed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_id, name, species, breed);
     }
 }
